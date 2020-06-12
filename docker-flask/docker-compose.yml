@@ -1,0 +1,17 @@
+version : '3'
+services:
+        web-flask:
+                #image : netsarang/monitoring-grafana
+                build:
+                        context: .
+                        dockerfile : Dockerfile
+
+                ports:
+                        - "80:5000"
+                volumes:
+                        - ./source/:/root/source/
+
+                container_name:
+                        web-flask
+                command:
+                        /bin/bash -c "python3 /root/source/controller.py ; sleep infinity"
